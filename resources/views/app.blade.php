@@ -20,12 +20,14 @@
             <nav class="flex items-center gap-4 text-sm">
                 @auth
                     <a href="{{ url('/chat') }}" class="hover:underline">Chat</a>
+                    <a href="{{ route('logout') }}" class="hover:underline">Logout</a>
                 @else
                     <a href="{{ route('login') }}" class="hover:underline">Log in</a>
                     @if (Route::has('register'))
                         <a href="{{ route('register') }}" class="hover:underline">Register</a>
                     @endif
-                @endauth </nav>
+                @endauth
+            </nav>
         @endif </div>
 </header>
 
