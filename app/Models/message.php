@@ -12,15 +12,15 @@ class message extends Model {
 
     protected $fillable = [
         'message',
-        'from',
-        'to',
+        'sender',
+        'recipient',
     ];
 
     public function from(): BelongsTo {
-        return $this->belongsTo(User::class, 'from');
+        return $this->belongsTo(User::class, 'sender');
     }
 
     public function to(): BelongsTo {
-        return $this->belongsTo(User::class, 'to');
+        return $this->belongsTo(User::class, 'recipient');
     }
 }
