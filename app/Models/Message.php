@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class message extends Model {
+class Message extends Model {
 
     use HasFactory;
 
@@ -16,11 +16,11 @@ class message extends Model {
         'recipient',
     ];
 
-    public function from(): BelongsTo {
+    public function sender(): BelongsTo {
         return $this->belongsTo(User::class, 'sender');
     }
 
-    public function to(): BelongsTo {
+    public function recipient(): BelongsTo {
         return $this->belongsTo(User::class, 'recipient');
     }
 }

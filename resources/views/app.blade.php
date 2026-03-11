@@ -9,29 +9,27 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('styles')
 </head>
-<body class="min-h-screen bg-gray-100 text-gray-900 antialiased">
+<body class="h-screen overflow-hidden bg-gray-100 text-gray-900 antialiased flex flex-col">
 <header class="border-b bg-white">
-    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+    <div class="mx-auto flex items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <a href="{{ url('/') }}" class="text-lg font-semibold">
             {{ config('app.name', 'Laravel') }}
         </a>
 
-        @if (Route::has('login'))
-            <nav class="flex items-center gap-4 text-sm">
-                @auth
-                    <a href="{{ url('/chat') }}" class="hover:underline">Chat</a>
-                    <a href="{{ route('logout') }}" class="hover:underline">Logout</a>
-                @else
-                    <a href="{{ route('login') }}" class="hover:underline">Log in</a>
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="hover:underline">Register</a>
-                    @endif
-                @endauth
-            </nav>
-        @endif </div>
+        <nav class="flex items-center gap-4 text-sm leading-none">
+            @auth
+                <span class="flex h-6 items-center">{{ $me->name }}</span>
+
+                <form method="POST" action="{{ route('logout') }}" class="inline-flex items-center m-0">
+                    @csrf
+                    <button type="submit" class="inline-flex items-center hover:underline relative top-px">Logout</button>
+                </form>
+            @endauth
+        </nav>
+    </div>
 </header>
 
-<main class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+<main class="mx-auto px-4 py-8 sm:px-6 lg:px-8 flex-1 min-h-0 w-full">
     @yield('content')
 </main>
 

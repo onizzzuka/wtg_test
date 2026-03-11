@@ -1,14 +1,22 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ChatController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('guest')->group(function () {
-    Route::get('/', [AuthController::class, 'showLogin'])->name('login');
-    Route::post('/login', [AuthController::class, 'login'])->name('login.post');
+Route::middleware('guest')->controller(AuthController::class)->group(function () {
+    Route::get('/login', 'showLogin')->name('login');
+    Route::post('/login', 'login')->name('login.post');
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/chat', fn () => view('chat'))->name('chat');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    Route::get('/', [ChatController::class, 'index'])->name('home');
+
+    Route::prefix('chat')->name('chat.')->controller(ChatController::class)->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/messages/{user}', 'messages')->name('messages');
+        Route::post('/messages', 'store')->name('messages.store');
+    });
 });

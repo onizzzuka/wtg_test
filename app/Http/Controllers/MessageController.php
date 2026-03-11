@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\message;
+use App\Models\Message;
 use Illuminate\Http\Request;
 
-class messageController extends Controller {
+class MessageController extends Controller {
 
     public function index() {
-        return message::all();
+        return Message::all();
     }
 
     public function store(Request $request) {
@@ -18,14 +18,14 @@ class messageController extends Controller {
             'to'      => ['required', 'exists:users'],
         ]);
 
-        return message::create($data);
+        return Message::create($data);
     }
 
-    public function show(message $message) {
+    public function show(Message $message) {
         return $message;
     }
 
-    public function update(Request $request, message $message) {
+    public function update(Request $request, Message $message) {
         $data = $request->validate([
             'message' => ['required'],
             'from'    => ['required', 'exists:users'],
@@ -37,7 +37,7 @@ class messageController extends Controller {
         return $message;
     }
 
-    public function destroy(message $message) {
+    public function destroy(Message $message) {
         $message->delete();
 
         return response()->json();
