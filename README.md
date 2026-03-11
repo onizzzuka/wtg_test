@@ -35,7 +35,7 @@ Is done by [Igor Klimov](https://djinni.co/q/de5ff2782a/).
      ```
    (or start it manually later)
 4. Don't forget to run VITE :)
-5. Run `php artisan migrate --seed` to create the database and seed it.
+5. Run `php artisan migrate --seed` to create the database and seed it (or register new users manually).
 6. Users are created automatically. It's 5 users with the same password `123456` and emails like user1@example.com and so on.
 7. Login with any of the users and you can chat now.
 
