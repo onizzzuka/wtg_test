@@ -38,3 +38,16 @@ Is done by [Igor Klimov](https://djinni.co/q/de5ff2782a/).
 5. Run `php artisan migrate --seed` to create the database and seed it.
 6. Users are created automatically. It's 5 users with the same password `123456` and emails like user1@example.com and so on.
 7. Login with any of the users and you can chat now.
+
+## What can be done better?
+### Backend
+1. Code should be separated into services. For now, it's overengineering but should be improved.
+2. The functionality should be covered with tests. For now, there are no tests at all.
+3. The messages are not encrypted, so it's not secure.
+4. Overall, UI issues described below should be implemented too.
+
+### UI 
+1. The UI is very basic, it can be improved a lot.
+2. The messages are not paginated, so if there are a lot of messages, it can be a problem.
+3. The messages are not marked as read, so if you have a lot of messages, it can be a problem.
+4. The users are not marked as online/offfline, so it's not clear who is online and who is not.
