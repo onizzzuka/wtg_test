@@ -33,4 +33,10 @@
             Sign in
         </button>
     </form>
+
+    <p class="mt-4 text-sm">
+        Don’t have an account?
+        <a href="{{ route('register') }}" class="underline">Create one</a>
+    </p>
+
 @endsection
